@@ -1,21 +1,29 @@
 import express from 'express'
-
-import { getPieces, getPiece } from './database.js'
-
 const app = express()
+import cors from 'cors'
+import dotenv from'dotenv'
+dotenv.config()
 
+import database from './database.js'
+
+app.use(cors())
 app.use(express.json())
+app.use(express.urlencoded({ extended : false }))
 
-app.get("/saxophone_repertoire_list", async (req, res) => {
-    const pieces = await getPieces()
-    res.send(pieces)
+// Create
+app.post('/insert', (request, response) => {
+
 })
 
-app.use((err, req, res, next) => {
-    console.error(err.stack)
-    res.status(500).send('Something broke!')
+// Read
+app.get('/getAll', (request, response) => {
+    response.json({
+        success: true
+    })
 })
 
-app.listen(8080, () => {
-    console.log('server is running on http://localhost:8080')
-})
+// Update
+
+// Delete
+
+app.listen(process.env.PORT, () => console.log('app is running'))

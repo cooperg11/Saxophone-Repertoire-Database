@@ -3,18 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <style>
-        body {
-            font-family: 'Courier New', Courier, monospace;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <title>Saxophone Repertoire List</title>
 </head>
 <body>
-    <h1>
+    <main>
+        <h1>
         Welcome to the rep list!
-    </h1>
+        </h1>
+
+        <br>
+        <div>
+            <input placeholder="search pieces"
+            id="search-input">
+            <button id="search-btn">Search</button>
+        </div>
+
+    </main>
+
+    <ul id="repertoire-list">
+            <li>Piece list</li>
+    </ul>
+
+    <script src="index.js"></script>
 </body>
 </html>

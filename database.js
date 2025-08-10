@@ -1,14 +1,16 @@
 import mysql from 'mysql2'
-
 import dotenv from 'dotenv'
+let instance = null
 dotenv.config()
 
 const pool = mysql.createPool({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE
+    database: process.env.MYSQL_DATABASE,
 }).promise()
+
+export default null
 
 export async function getPieces() {
     const [rows] = await pool.query("SELECT * FROM saxophone_repertoire_list")
@@ -23,6 +25,3 @@ export async function getPiece(title, composer) {
     `, [title, composer]);
     return row;
 }
-
-//const result = await getPieces()
-//console.log(result)

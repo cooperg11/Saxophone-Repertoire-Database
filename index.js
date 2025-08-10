@@ -1,21 +1,14 @@
-const express = require('express')
-const fs = require('fs')
-const app = express()
+document.addEventListener('DOMContentLoaded', function () {
+    fetch('http://localhost:5000/getAll')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    loadHTMLList([])
+})
 
-console.log('hello bitch')
+function loadHTMLList(data) {
+    const list = document.querySelector('ul li')
 
-app.get('/', (request, response) => {
-
-    fs.readFile('./index.html', 'utf8', (err, html) => {
-
-        if (err) {
-            response.status(500).send('Oots!')
-        }
-
-        response.send(html);
-
-    })
-
-});
-
-app.listen(process.env.PORT || 3000, () => console.log('App available on http://localhost:3000'))
+    if (data.length === 0) {
+        list.innerHTML = "<li class='no-data'>No Data</li>"
+    }
+}
