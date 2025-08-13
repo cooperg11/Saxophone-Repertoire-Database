@@ -7,14 +7,14 @@ async function loadPieces() {
         const response = await fetch('/pieces')
         const data = await response.json()
         console.log('Fetched data:', data)
-        loadHTMLList(data)
+        loadHTMLContainer(data)
     } catch (error) {
         console.error('Error fetching pieces:', error)
-        loadHTMLList([])
+        loadHTMLContainer([])
     }
 }
 
-function loadHTMLList(data) {
+function loadHTMLContainer(data) {
     const list = document.querySelector('#repertoire-list')
     
     list.innerHTML = ''
@@ -29,11 +29,9 @@ function loadHTMLList(data) {
         listItem.className = 'piece-item'
         
         listItem.innerHTML = `
-            <div>
-                <h3 class="piece-title">${piece.Title || 'Unknown Title'}</h3>
-                <p class="piece-composer">by ${piece.Composer || 'Unknown Composer'}</p>
+            <div class='piece-container'>
+                <a class='piece-info' href='piece.html'>${piece.Title} by ${piece.Composer}</a>
             </div>
-            <br>
         `
         
         list.appendChild(listItem)
