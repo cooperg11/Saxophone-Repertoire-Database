@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "public/js/app.js",
+  "main": "server/app.js",
   "scripts": {
-    "dev": "npx nodemon public/js/app.js",
-    "start": "nodemon public/js/app.js"
+    "dev": "npx nodemon server/app.js",
+    "start": "nodemon server/app.js"
   },
   "keywords": [],
   "author": "",

@@ -9,7 +9,7 @@ dotenv.config()
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-const publicPath = path.join(__dirname, '../')
+const publicPath = path.join(__dirname, '../public')
 
 const pool = mysql.createPool({
     connectionLimit : 10,
@@ -35,13 +35,9 @@ app.get('/pieces', (req, res) => {
     })
 })
 
-//Temp for testing
-const title = "Aria"
-const composer = "Eugene Bozza"
-
 app.get('/individual_piece', (req, res) => {
     const q = "SELECT * FROM saxophone_repertoire_list WHERE Title = ? and Composer = ?"
-    pool.query(q, [title, composer], (err, data) => {
+    pool.query(q, [req.query.Title, req.query.Composer], (err, data) => {
         if (err) {
             console.error(err)
             return res.status(500).json({ error: "Failed to query for individual piece"})

@@ -30,7 +30,7 @@ function loadHTMLContainer(data) {
         
         listItem.innerHTML = `
             <div class='piece-container'>
-                <a class='piece-info' href='piece.html'>${piece.Title} by ${piece.Composer}</a>
+                <a class='piece-info' href='piece.html?Title=${piece.Title}&Composer=${piece.Composer}'>${piece.Title} by ${piece.Composer}</a>
             </div>
         `
         
